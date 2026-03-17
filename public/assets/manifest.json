@@ -1,0 +1,51 @@
+{
+  "assets": [
+    {
+      "name": "logo-glyph-dark.svg",
+      "path": "/assets/logos/logo-glyph-dark.svg",
+      "type": "vector",
+      "usage": "Primary logo for dark theme",
+      "size": "80x80",
+      "license": "Private - Farishta AI"
+    },
+    {
+      "name": "logo-glyph-light.svg",
+      "path": "/assets/logos/logo-glyph-light.svg",
+      "type": "vector",
+      "usage": "Primary logo for light theme",
+      "size": "80x80",
+      "license": "Private - Farishta AI"
+    },
+    {
+      "name": "logo-wing-detail.svg",
+      "path": "/assets/logos/logo-wing-detail.svg",
+      "type": "vector",
+      "usage": "Decorative wing element for micro-animations",
+      "size": "variable",
+      "license": "Private - Farishta AI"
+    },
+    {
+      "name": "icon-send.svg",
+      "path": "/assets/icons/icon-send.svg",
+      "type": "vector",
+      "usage": "Send button icon",
+      "size": "24x24",
+      "license": "Lucide React"
+    },
+    {
+      "name": "icon-theme-toggle.svg",
+      "path": "/assets/icons/icon-theme-toggle.svg",
+      "type": "vector",
+      "usage": "Theme switcher icon",
+      "size": "24x24",
+      "license": "Lucide React"
+    }
+  ],
+  "exportSpecs": {
+    "svg": "Single source of truth, editable vectors",
+    "png": "1x, 2x, 3x density for raster fallback",
+    "webp": "For large hero/texture images",
+    "optimization": "All assets optimized for web delivery"
+  },
+  "namingConvention": "kebab-case with theme and scale suffixes (e.g., logo-mark-dark@2x.png)"
+}

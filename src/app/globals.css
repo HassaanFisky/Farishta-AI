@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Farishta brand tokens ───────────────────────────────────────────────── */
+:root {
+  /* Theme: Layl (Dark/Night) */
+  --bg: #071012;
+  --card: #0b1a1d;
+  --surface-elevated: #0f2529;
+  --gold-primary: #f6d972;
+  --gold-rich: #d9b24a;
+  --accent-emerald: #2b5b45;
+  --muted-text: #c9d6d6;
+  --text-primary: #e8f6f6;
+  --accent-glow: rgba(246, 217, 114, 0.18);
+  --glass: rgba(255, 255, 255, 0.04);
+  --breath: cubic-bezier(0.22, 1, 0.36, 1);
+  --easing: cubic-bezier(0.2, 0.9, 0.28, 1);
+  --fast: 160ms;
+  --medium: 320ms;
+  --slow: 640ms;
+
+  /* Farishta brand */
+  --farishta-green: #1B4332;
+  --farishta-green-dark: #0F2419;
+  --farishta-green-deeper: #162E1F;
+  --farishta-gold: #C9A84C;
+  --farishta-gold-muted: rgba(201, 168, 76, 0.4);
+  --farishta-gold-border: rgba(201, 168, 76, 0.2);
+}
+
+[data-theme="noor"] {
+  /* Light Theme */
+  --bg: #f9fafb;
+  --card: #ffffff;
+  --surface-elevated: #f4f5f7;
+  --gold-primary: #d4af37;
+  --gold-rich: #b8860b;
+  --accent-emerald: #1f4e3d;
+  --muted-text: #4b5563;
+  --text-primary: #111827;
+  --accent-glow: rgba(212, 175, 55, 0.12);
+  --glass: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="adn"] {
+  /* Divine/Eden Theme */
+  --bg: #022c22;
+  --card: #064e3b;
+  --surface-elevated: #065f46;
+  --gold-primary: #ffd700;
+  --gold-rich: #daa520;
+  --accent-emerald: #10b981;
+  --muted-text: #a7f3d0;
+  --text-primary: #ecfdf5;
+  --accent-glow: rgba(16, 185, 129, 0.25);
+  --glass: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    var(--font-inter),
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  transition:
+    background var(--medium) var(--easing),
+    color var(--medium) var(--easing);
+}
+
+:lang(ar) {
+  font-family: var(--font-amiri), "Noto Naskh Arabic", serif;
+  direction: rtl;
+}
+
+/* ── Custom scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0F2419;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.6);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, 0.35) #0F2419;
+}
+
+/* ── Typography utilities ────────────────────────────────────────────────── */
+@layer utilities {
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  .text-sm {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+  .text-base {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .text-lg {
+    font-size: 1.125rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+  .text-xl {
+    font-size: 1.25rem;
+    line-height: 1.35;
+    font-weight: 600;
+  }
+  .text-2xl {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  .display-1 {
+    font-size: 2.25rem;
+    line-height: 1.05;
+    font-weight: 700;
+  }
+
+  .glass-surface {
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glow-gold {
+    box-shadow: 0 6px 24px var(--accent-glow);
+  }
+
+  .glow-gold-strong {
+    box-shadow:
+      0 10px 30px rgba(246, 217, 114, 0.28),
+      0 0 60px var(--accent-glow);
+  }
+
+  /* ── Arabic text ───────────────────────────────────────────────────────── */
+  .arabic-text {
+    font-family: Amiri, "Noto Naskh Arabic", Georgia, serif;
+    direction: rtl;
+    unicode-bidi: bidi-override;
+  }
+
+  /* ── Loading shimmer ───────────────────────────────────────────────────── */
+  .gold-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(201, 168, 76, 0.15) 50%,
+      transparent 100%
+    );
+    background-size: 200% auto;
+    animation: goldShimmer 2s linear infinite;
+  }
+
+  /* ── Whisper glow ──────────────────────────────────────────────────────── */
+  .whisper-glow {
+    animation: whisperGlow 4s ease-in-out infinite;
+  }
+}
+
+/* ── Keyframe animations ─────────────────────────────────────────────────── */
+
+/* Gold shimmer — for loading states */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Whisper glow — subtle gold pulse on WhisperMode card */
+@keyframes whisperGlow {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(201, 168, 76, 0.05),
+      0 0 60px rgba(201, 168, 76, 0.03);
+  }
+  50% {
+    box-shadow:
+      0 0 40px rgba(201, 168, 76, 0.12),
+      0 0 80px rgba(201, 168, 76, 0.06);
+  }
+}
+
+/* Gold pulse — for badges and accents */
+@keyframes goldPulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

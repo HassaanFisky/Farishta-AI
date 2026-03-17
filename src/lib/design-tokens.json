@@ -1,0 +1,106 @@
+{
+  "themes": {
+    "divine-dark": {
+      "name": "Divine Dark",
+      "description": "Deep, contemplative backdrop highlighting the golden glyph; for night-mode and focused reading.",
+      "background": {
+        "hex": "#071012",
+        "rgb": "7,16,18",
+        "usage": "app background, full-bleed"
+      },
+      "card": {
+        "hex": "#0b1a1d",
+        "rgb": "11,26,29",
+        "usage": "cards, panels"
+      },
+      "surface-elevated": {
+        "hex": "#0f2529",
+        "rgb": "15,37,41"
+      },
+      "gold-primary": {
+        "hex": "#F6D972",
+        "rgb": "246,217,114",
+        "usage": "logo, accents, primary glow",
+        "contrastGoal": ">=4.5 vs background"
+      },
+      "gold-rich": {
+        "hex": "#D9B24A",
+        "rgb": "217,178,74"
+      },
+      "accent-emerald": {
+        "hex": "#2b5b45",
+        "rgb": "43,91,69",
+        "usage": "subtle accents and seals"
+      },
+      "muted-text": {
+        "hex": "#C9D6D6",
+        "rgb": "201,214,214",
+        "usage": "secondary text"
+      },
+      "text-primary": {
+        "hex": "#E8F6F6",
+        "rgb": "232,246,246",
+        "usage": "primary text"
+      },
+      "accent-glow": {
+        "hex": "rgba(246,217,114,0.18)",
+        "rgb": "246,217,114,0.18",
+        "usage": "soft halo/glow"
+      },
+      "glass-trans": {
+        "hex": "rgba(255,255,255,0.04)",
+        "usage": "glassmorphic backgrounds"
+      }
+    },
+    "ethereal-light": {
+      "name": "Ethereal Light",
+      "description": "Soft luminous canvas that supports the white-back logo variant and breath-like interactions.",
+      "background": {
+        "hex": "#F3F4F6",
+        "rgb": "243,244,246",
+        "usage": "app background"
+      },
+      "card": {
+        "hex": "#FFFFFF",
+        "rgb": "255,255,255",
+        "usage": "cards, panels"
+      },
+      "soft-ivory": {
+        "hex": "#FBF8F2",
+        "rgb": "251,248,242"
+      },
+      "gold-primary": {
+        "hex": "#F4D88B",
+        "rgb": "244,216,139",
+        "usage": "logo, accents, primary glow"
+      },
+      "gold-rich": {
+        "hex": "#D4AD5D",
+        "rgb": "212,173,93"
+      },
+      "accent-forest": {
+        "hex": "#3b6a4f",
+        "rgb": "59,106,79"
+      },
+      "muted-text": {
+        "hex": "#6B6F72",
+        "rgb": "107,111,114"
+      },
+      "text-primary": {
+        "hex": "#0F1720",
+        "rgb": "15,23,32"
+      },
+      "accent-glow": {
+        "hex": "rgba(244,216,139,0.16)",
+        "rgb": "244,216,139,0.16"
+      },
+      "glass-trans": {
+        "hex": "rgba(15,23,32,0.04)"
+      }
+    }
+  },
+  "accessibilityNotes": {
+    "contrastRecommendations": "Use gold-primary against background only where contrast >= 4.5:1; when necessary, use gold-rich or add a subtle dark overlay to meet WCAG.",
+    "usageGuidelines": "Prefer text-primary for body copy; use muted-text for meta and secondary copy. Use accent-glow sparingly to create Barakah-like halos around primary interactive elements."
+  }
+}
