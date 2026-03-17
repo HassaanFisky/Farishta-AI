@@ -279,7 +279,7 @@ export async function POST(request: NextRequest) {
 
     // ── Gemini call ───────────────────────────────────────────────────────────
     const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash",
+      model: "gemini-2.0-flash",
       systemInstruction: systemPrompt,
     });
 
@@ -304,7 +304,8 @@ export async function POST(request: NextRequest) {
       whisperReference,
     });
   } catch (error) {
-    console.error("[Farishta AI] API Error:", error);
+    const errMsg = error instanceof Error ? error.message : String(error);
+    console.error("[Farishta AI] API Error:", errMsg);
     return NextResponse.json(
       {
         error: "An error occurred while seeking guidance. Please try again.",
