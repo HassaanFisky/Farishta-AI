@@ -12,7 +12,9 @@ interface ChatContextValue {
   renameSession: (id: string, title: string) => void
   addMessage: (sessionId: string, msg: Omit<Message, 'id' | 'timestamp'>) => string
   updateMessage: (sessionId: string, msgId: string, patch: Partial<Message>) => void
-  setActiveSession: (id: string) => void
+  setActiveSession: (id: string | null) => void
+  language: string
+  setLanguage: (lang: string) => void
 }
 
 const ChatContext = createContext<ChatContextValue | undefined>(undefined)
@@ -42,6 +44,7 @@ function hydrateSessions(raw: unknown): ChatSession[] {
 export function ChatProvider({ children }: { children: React.ReactNode }) {
   const [sessions, setSessions] = useState<ChatSession[]>([])
   const [activeSessionId, setActiveSessionId] = useState<string | null>(null)
+  const [language, setLanguage] = useState<string>('Auto')
 
   useEffect(() => {
     try {
@@ -49,6 +52,9 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       const hydrated = hydrateSessions(raw)
       setSessions(hydrated)
       if (hydrated.length > 0) setActiveSessionId(hydrated[0].id)
+      
+      const savedLang = localStorage.getItem('farishta-language')
+      if (savedLang) setLanguage(savedLang)
     } catch {}
   }, [])
 
@@ -57,6 +63,12 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('farishta-sessions', JSON.stringify(sessions))
     } catch {}
   }, [sessions])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('farishta-language', language)
+    } catch {}
+  }, [language])
 
   const activeSession = sessions.find(s => s.id === activeSessionId) ?? null
 
@@ -112,12 +124,17 @@ export function ChatProvider({ children }: { children: React.ReactNode }) {
     }))
   }, [])
 
+  const setActiveSession = useCallback((id: string | null) => {
+    setActiveSessionId(id)
+  }, [])
+
   return (
     <ChatContext.Provider value={{
       sessions, activeSessionId, activeSession,
       createSession, deleteSession, renameSession,
       addMessage, updateMessage,
-      setActiveSession: setActiveSessionId,
+      setActiveSession,
+      language, setLanguage,
     }}>
       {children}
     </ChatContext.Provider>

@@ -1,21 +1,21 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
+import { Cormorant_Garamond, Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/context/ThemeContext'
 import { ChatProvider } from '@/context/ChatContext'
 import { SidebarProvider } from '@/context/SidebarContext'
 
 const cormorant = Cormorant_Garamond({
-  variable: '--font-cormorant',
+  variable: '--font-serif',
   weight: ['300', '400', '500'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
-  weight: ['300', '400', '500'],
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: '--font-sans',
+  weight: ['300', '400', '500', '600'],
   subsets: ['latin'],
   display: 'swap',
 })
@@ -23,7 +23,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Farishta AI — Truth. One step at a time.',
   description: 'An angelic mentor guiding every human toward truth — rooted in Quran, Hadith, and wisdom.',
-  icons: { icon: '/assets/logos/Farista-AI-LOGO-main.png' },
+  icons: { icon: '/assets/logos/farishta-ai-logo.png' },
 }
 
 // Inline anti-flash script — runs before any CSS paint
@@ -32,9 +32,9 @@ const ANTI_FLASH_SCRIPT = `
   try {
     var t = localStorage.getItem('farishta-theme') || 'main';
     var themes = {
-      main:  { '--bg-app':'#0e1f17','--bg-sidebar':'#0a1912','--bg-chat':'#0b1c14','--bg-surface':'#132a1c','--bg-input':'#112318','--txt-primary':'#e8e4dc','--gold':'#C9A84C','--bg-glass':'rgba(10,25,18,0.92)' },
-      dark:  { '--bg-app':'#1a1c1e','--bg-sidebar':'#141618','--bg-chat':'#161819','--bg-surface':'#1e2124','--bg-input':'#1c1f22','--txt-primary':'#d4d0c8','--gold':'#C9A84C','--bg-glass':'rgba(20,22,24,0.94)' },
-      light: { '--bg-app':'#f5f1e9','--bg-sidebar':'#ede9e0','--bg-chat':'#f0ece3','--bg-surface':'#e8e4db','--bg-input':'#f8f4ec','--txt-primary':'#2c2820','--gold':'#9a7828','--bg-glass':'rgba(240,236,227,0.94)' },
+      main:  { '--bg-app':'#0d1110','--bg-sidebar':'#090c0b','--bg-chat':'#0d1110','--bg-surface':'#161c1a','--bg-input':'#131917','--txt-primary':'#f5f5f3','--gold':'#d4af37','--bg-glass':'rgba(13,17,16,0.85)' },
+      dark:  { '--bg-app':'#080808','--bg-sidebar':'#050505','--bg-chat':'#080808','--bg-surface':'#111111','--bg-input':'#0c0c0c','--txt-primary':'#ececeb','--gold':'#d4af37','--bg-glass':'rgba(10,10,10,0.9)' },
+      light: { '--bg-app':'#fcfcf9','--bg-sidebar':'#f7f7f2','--bg-chat':'#fcfcf9','--bg-surface':'#f0f0e8','--bg-input':'#fdfdfb','--txt-primary':'#1c1c1a','--gold':'#a68b30','--bg-glass':'rgba(252,252,249,0.92)' },
     };
     var vars = themes[t] || themes.main;
     var root = document.documentElement;
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: ANTI_FLASH_SCRIPT }} />
       </head>
-      <body className={`${cormorant.variable} ${dmSans.variable}`} suppressHydrationWarning>
+      <body className={`${cormorant.variable} ${plusJakarta.variable}`} suppressHydrationWarning>
         <ThemeProvider>
           <ChatProvider>
             <SidebarProvider>
